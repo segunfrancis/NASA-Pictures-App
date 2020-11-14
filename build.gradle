@@ -14,8 +14,7 @@ buildscript {
         dagger_version = "1.0.0-alpha02"
         timber_version = "4.7.1"
         coil_version = "1.0.0"
-        firebase_crashlytics_version = "17.2.2"
-        firebase_analytics_version = "18.0.0"
+        firebase_version = "26.1.0"
         multidex_version = "2.0.1"
         javax_inject_version = "1"
 

@@ -70,15 +70,16 @@ dependencies {
     // Coil Image Loader - SVG
     implementation("io.coil-kt:coil-svg:$coil_version")
 
-    // Timber
-    implementation "com.jakewharton.timber:timber:$timber_version"
-
     // Multidex
     implementation "androidx.multidex:multidex:$multidex_version"
 
     // Firebase crashlytics
-    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
-    implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
+    implementation platform("com.google.firebase:firebase-bom:$firebase_version")
+    implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-analytics-ktx"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
