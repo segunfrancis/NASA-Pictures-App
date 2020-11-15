@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">NASA Pictures app</string>
     <string name="desc_image">Image of a nasa photo</string>
+    <string name="text_title">Title</string>
+    <string name="text_explanation">Explanation</string>
+    <string name="text_date">Date</string>
 
 </resources>
