@@ -9,7 +9,11 @@
         android:id="@+id/pictureListFragment"
         android:name="com.project.segunfrancis.nasapicturesapp.ui.list.PictureListFragment"
         android:label="fragment_picture_list"
-        tools:layout="@layout/fragment_picture_list" />
+        tools:layout="@layout/fragment_picture_list" >
+        <action
+            android:id="@+id/action_pictureListFragment_to_pictureDetailsFragment"
+            app:destination="@id/pictureDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pictureDetailsFragment"
         android:name="com.project.segunfrancis.nasapicturesapp.ui.details.PictureDetailsFragment"
