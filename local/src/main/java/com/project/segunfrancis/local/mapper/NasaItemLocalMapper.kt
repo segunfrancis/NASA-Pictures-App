@@ -1,7 +1,6 @@
 package com.project.segunfrancis.local.mapper
 
 import com.project.segunfrancis.data.model.NasaItemData
-import com.project.segunfrancis.domain.model.NasaItemDomain
 import com.project.segunfrancis.local.model.NasaItemLocal
 import javax.inject.Inject
 
