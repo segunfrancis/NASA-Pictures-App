@@ -65,6 +65,7 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
     //hilt for DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$dagger_version"
     kapt "androidx.hilt:hilt-compiler:$dagger_version"
