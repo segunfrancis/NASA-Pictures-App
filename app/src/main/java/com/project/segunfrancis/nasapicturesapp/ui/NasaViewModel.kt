@@ -1,19 +1,15 @@
 package com.project.segunfrancis.nasapicturesapp.ui
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.project.segunfrancis.domain.usecase.GetDataUseCase
 import com.project.segunfrancis.nasapicturesapp.mapper.NasaItemMapper
 import com.project.segunfrancis.nasapicturesapp.model.NasaItem
+import com.project.segunfrancis.nasapicturesapp.util.Event
 import com.project.segunfrancis.nasapicturesapp.util.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.io.InputStream
 
 /**
@@ -33,9 +29,11 @@ class NasaViewModel @ViewModelInject constructor(
                 emit(Result.Error(it))
             }
             .collect { items ->
-                emit(Result.Success(items.map {
+                emit(Result.Success(items.reversed().map {
                     mapper.mapDomainToAppLayer(it)
                 }))
             }
     }
+
+    val adapterPosition = MutableLiveData<Event<Int>>()
 }

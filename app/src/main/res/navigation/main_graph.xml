@@ -8,11 +8,24 @@
     <fragment
         android:id="@+id/pictureListFragment"
         android:name="com.project.segunfrancis.nasapicturesapp.ui.list.PictureListFragment"
-        android:label="fragment_picture_list"
-        tools:layout="@layout/fragment_picture_list" />
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_picture_list" >
+        <action
+            android:id="@+id/action_pictureListFragment_to_pictureDetailsFragment"
+            app:destination="@id/pictureDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/pictureDetailsFragment"
         android:name="com.project.segunfrancis.nasapicturesapp.ui.details.PictureDetailsFragment"
-        android:label="fragment_picture_details"
-        tools:layout="@layout/fragment_picture_details" />
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_picture_details" >
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

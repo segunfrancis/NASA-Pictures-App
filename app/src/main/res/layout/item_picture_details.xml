@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+        <ImageView
+            android:id="@+id/detail_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_image"
+            android:minHeight="300dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/header" />
+
+        <TextView
+            android:id="@+id/text"
+            style="@style/SubText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/abeezee"
+            android:text="@string/text_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_photo" />
+
+        <TextView
+            android:id="@+id/title_text"
+            style="@style/MainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abeezee"
+            app:layout_constraintEnd_toEndOf="@id/text"
+            app:layout_constraintStart_toStartOf="@id/text"
+            app:layout_constraintTop_toBottomOf="@id/text"
+            tools:text="The judge of the jungle" />
+
+        <TextView
+            android:id="@+id/text2"
+            style="@style/SubText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/text_date"
+            app:layout_constraintEnd_toEndOf="@id/title_text"
+            app:layout_constraintStart_toStartOf="@id/title_text"
+            app:layout_constraintTop_toBottomOf="@id/title_text" />
+
+        <TextView
+            android:id="@+id/date_text"
+            style="@style/MainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/text2"
+            app:layout_constraintStart_toStartOf="@id/text2"
+            app:layout_constraintTop_toBottomOf="@id/text2"
+            tools:text="2011:12:9" />
+
+        <TextView
+            android:id="@+id/text3"
+            style="@style/SubText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/text_explanation"
+            app:layout_constraintEnd_toEndOf="@id/date_text"
+            app:layout_constraintStart_toStartOf="@id/date_text"
+            app:layout_constraintTop_toBottomOf="@id/date_text" />
+
+        <TextView
+            android:id="@+id/explanation_text"
+            style="@style/MainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/text4"
+            app:layout_constraintEnd_toEndOf="@id/text3"
+            app:layout_constraintStart_toStartOf="@id/text3"
+            app:layout_constraintTop_toBottomOf="@id/text3"
+            tools:text="Phasellus gravida semper nisi. Vivamus elementum semper nisi. Cras non dolor." />
+
+        <TextView
+            android:id="@+id/text4"
+            style="@style/MainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/text_copyright"
+            app:layout_constraintStart_toStartOf="@id/explanation_text"
+            app:layout_constraintTop_toBottomOf="@id/explanation_text"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/copyright_text"
+            style="@style/MainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/text4"
+            app:layout_constraintEnd_toEndOf="@+id/explanation_text"
+            app:layout_constraintStart_toEndOf="@+id/text4"
+            app:layout_constraintTop_toTopOf="@+id/text4"
+            tools:text="Leonardo Julio" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
