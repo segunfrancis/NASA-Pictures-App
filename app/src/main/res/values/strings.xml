@@ -7,5 +7,7 @@
     <string name="text_explanation">Explanation</string>
     <string name="text_date">Date</string>
     <string name="text_copyright">\u00A9</string>
+    <string name="text_onboarding_instruction">Swipe left or right to view more pictures</string>
+    <string name="text_ok">OK</string>
 
 </resources>
