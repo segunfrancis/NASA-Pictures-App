@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">NASA Pictures app</string>
     <string name="desc_image">Image of a nasa photo</string>
+    <string name="desc_image_right_navigation">Click to navigate right</string>
+    <string name="desc_image_left_navigation">Click to navigate left</string>
+    <string name="text_title">Title</string>
+    <string name="text_explanation">Explanation</string>
+    <string name="text_date">Date</string>
+    <string name="text_copyright">\u00A9</string>
 
 </resources>

@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.details.PictureDetailsFragment">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/photo_viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/previous_button"
+        android:layout_width="46dp"
+        android:layout_height="86dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/navigationButtonColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/desc_image_left_navigation"
+            android:src="@drawable/ic_chevron_left"
+            android:layout_gravity="center" />
+    </com.google.android.material.card.MaterialCardView>
 
-</FrameLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/next_button"
+        android:layout_width="46dp"
+        android:layout_height="86dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/navigationButtonColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/desc_image_right_navigation"
+            android:src="@drawable/ic_chevron_right"
+            android:layout_gravity="center" />
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

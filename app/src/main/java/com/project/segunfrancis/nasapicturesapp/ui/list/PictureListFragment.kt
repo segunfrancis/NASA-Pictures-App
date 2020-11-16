@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.ImageLoader
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.project.segunfrancis.nasapicturesapp.R
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureListBinding
 import com.project.segunfrancis.nasapicturesapp.ui.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.Result.*
@@ -38,7 +40,10 @@ class PictureListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val pictureAdapter = PictureListAdapter(imageLoader)
+        val pictureAdapter = PictureListAdapter(imageLoader) {
+            val direction = PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(it)
+            findNavController().navigate(direction)
+        }
         viewModel.pictureList.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Success -> {
@@ -59,7 +64,8 @@ class PictureListFragment : Fragment() {
         }
         binding.pictureListRecyclerView.apply {
             adapter = pictureAdapter
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager =
+                GridLayoutManager(requireContext(), resources.getInteger(R.integer.span_count))
         }
     }
 
