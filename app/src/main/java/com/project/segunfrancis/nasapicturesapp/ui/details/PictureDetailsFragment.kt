@@ -1,5 +1,6 @@
 package com.project.segunfrancis.nasapicturesapp.ui.details
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureDetailsBinding
 import com.project.segunfrancis.nasapicturesapp.ui.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.*
+import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_KEY
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -30,6 +32,8 @@ class PictureDetailsFragment : Fragment() {
 
     @Inject
     lateinit var imageLoader: ImageLoader
+    @Inject
+    lateinit var preferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +45,10 @@ class PictureDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (!preferences.getBoolean(ON_BOARDING_KEY, false)) { // Not seen onBoarding screen
+            OnBoardingFragment().show(childFragmentManager, "onBoarding_fragment")
+        }
 
         val detailsPagerAdapter = DetailsPagerAdapter(imageLoader)
         viewModel.pictureList.observe(viewLifecycleOwner) { result ->
