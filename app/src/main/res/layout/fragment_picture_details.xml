@@ -15,25 +15,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="62dp"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/colorAccent"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/ic_chevron_left"
-        app:iconSize="32dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/previous_button"
+        android:layout_width="46dp"
+        android:layout_height="86dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/navigationButtonColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/desc_image_left_navigation"
+            android:src="@drawable/ic_chevron_left"
+            android:layout_gravity="center" />
+    </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="62dp"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/colorAccent"
-        app:cornerRadius="0dp"
-        app:icon="@drawable/ic_chevron_right"
-        app:iconSize="32dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/next_button"
+        android:layout_width="46dp"
+        android:layout_height="86dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/navigationButtonColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/desc_image_right_navigation"
+            android:src="@drawable/ic_chevron_right"
+            android:layout_gravity="center" />
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

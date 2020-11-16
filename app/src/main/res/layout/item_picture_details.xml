@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
 
         <ImageView
             android:id="@+id/detail_photo"
@@ -26,11 +27,11 @@
             style="@style/SubText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/abeezee"
             android:text="@string/text_title"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detail_photo" />
@@ -51,8 +52,8 @@
             style="@style/SubText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/text_date"
             android:layout_marginTop="16dp"
+            android:text="@string/text_date"
             app:layout_constraintEnd_toEndOf="@id/title_text"
             app:layout_constraintStart_toStartOf="@id/title_text"
             app:layout_constraintTop_toBottomOf="@id/title_text" />
@@ -72,8 +73,8 @@
             style="@style/SubText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/text_explanation"
             android:layout_marginTop="16dp"
+            android:text="@string/text_explanation"
             app:layout_constraintEnd_toEndOf="@id/date_text"
             app:layout_constraintStart_toStartOf="@id/date_text"
             app:layout_constraintTop_toBottomOf="@id/date_text" />
@@ -83,12 +84,34 @@
             style="@style/MainText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@id/text4"
             app:layout_constraintEnd_toEndOf="@id/text3"
             app:layout_constraintStart_toStartOf="@id/text3"
             app:layout_constraintTop_toBottomOf="@id/text3"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="Phasellus gravida semper nisi. Vivamus elementum semper nisi. Cras non dolor." />
+
+        <TextView
+            android:id="@+id/text4"
+            style="@style/MainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/text_copyright"
+            app:layout_constraintStart_toStartOf="@id/explanation_text"
+            app:layout_constraintTop_toBottomOf="@id/explanation_text"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/copyright_text"
+            style="@style/MainText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/text4"
+            app:layout_constraintEnd_toEndOf="@+id/explanation_text"
+            app:layout_constraintStart_toEndOf="@+id/text4"
+            app:layout_constraintTop_toTopOf="@+id/text4"
+            tools:text="Leonardo Julio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -41,8 +41,8 @@ class PictureListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val pictureAdapter = PictureListAdapter(imageLoader) {
-            findNavController().navigate(R.id.action_pictureListFragment_to_pictureDetailsFragment)
-            Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+            val direction = PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(it)
+            findNavController().navigate(direction)
         }
         viewModel.pictureList.observe(viewLifecycleOwner) { result ->
             when (result) {

@@ -10,16 +10,20 @@ import com.project.segunfrancis.nasapicturesapp.databinding.ItemPictureDetailsBi
 import com.project.segunfrancis.nasapicturesapp.model.NasaItem
 import com.project.segunfrancis.nasapicturesapp.ui.list.PictureDiffUtil
 import com.project.segunfrancis.nasapicturesapp.util.loadImage
+import com.project.segunfrancis.nasapicturesapp.util.makeGone
 
 /**
  * Created by SegunFrancis
  */
 
-class DetailsPagerAdapter(private val imageLoader: ImageLoader) :
+class DetailsPagerAdapter(
+    private val imageLoader: ImageLoader
+) :
     ListAdapter<NasaItem, DetailsPagerAdapter.DetailsPagerViewHolder>(PictureDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsPagerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_picture_details, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_picture_details, parent, false)
         return DetailsPagerViewHolder(ItemPictureDetailsBinding.bind(view), imageLoader)
     }
 
@@ -36,6 +40,10 @@ class DetailsPagerAdapter(private val imageLoader: ImageLoader) :
             dateText.text = item.date
             explanationText.text = item.explanation
             detailPhoto.loadImage(imageLoader, item.hdurl)
+            copyrightText.text = item.copyright
+            if (item.copyright == null) {
+                text4.makeGone()
+            }
         }
     }
 }

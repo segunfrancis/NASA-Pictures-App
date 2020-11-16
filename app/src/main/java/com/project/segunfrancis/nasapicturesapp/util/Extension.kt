@@ -2,6 +2,7 @@ package com.project.segunfrancis.nasapicturesapp.util
 
 import android.content.Context
 import android.graphics.Color
+import android.view.View
 import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import coil.ImageLoader
@@ -29,4 +30,12 @@ fun circularProgress(context: Context): CircularProgressDrawable {
         setColorSchemeColors(Color.rgb(31, 9, 81), Color.rgb(3, 218, 197))
         start()
     }
+}
+
+fun View.makeVisible() {
+    visibility = View.VISIBLE
+}
+
+fun View.makeGone() {
+    visibility = View.GONE
 }
