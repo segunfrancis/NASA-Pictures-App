@@ -18,6 +18,8 @@ buildscript {
         multidex_version = "2.0.1"
         javax_inject_version = "1"
         gson_version = "2.8.6"
+        lottie_version = "3.4.1"
+        legacy_support_version = "1.0.0"
 
         junit_version = "4.13"
         junit_ext_version = "1.1.2"
@@ -33,7 +35,7 @@ buildscript {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
         classpath 'com.google.gms:google-services:4.3.4'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

@@ -1,8 +1,10 @@
 package com.project.segunfrancis.nasapicturesapp.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import coil.ImageLoader
 import coil.util.CoilUtils
+import com.project.segunfrancis.nasapicturesapp.util.AppConstants.SHARED_PREF_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,5 +59,11 @@ class NasaModule {
     @Provides
     fun provideInputStream(@ApplicationContext context: Context): InputStream {
         return context.assets.open("data.json")
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreference(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
     }
 }
