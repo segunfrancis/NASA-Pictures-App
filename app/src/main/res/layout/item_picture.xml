@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/photo_thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="240dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/desc_image"
             android:scaleType="centerCrop"
@@ -26,15 +26,18 @@
         <TextView
             android:id="@+id/photo_title"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_height="70dp"
+            android:padding="8dp"
             android:fontFamily="@font/abeezee"
             android:textAlignment="center"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:background="@color/pictureTitleBackgroundColor"
+            app:layout_constraintBottom_toBottomOf="@id/photo_thumbnail"
             app:layout_constraintEnd_toEndOf="@id/photo_thumbnail"
             app:layout_constraintStart_toStartOf="@id/photo_thumbnail"
-            app:layout_constraintTop_toBottomOf="@id/photo_thumbnail"
             tools:text="Nebulla Major kosf sdufuoasf dnfis dfdanf fanno fnnfa" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
