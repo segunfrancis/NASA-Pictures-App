@@ -2,6 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "kotlin-allopen"
+
+allOpen {
+    annotation('com.project.segunfrancis.local.Mockable')
+}
 
 android {
     compileSdkVersion 30
@@ -30,6 +35,9 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    testOptions.unitTests {
+        includeAndroidResources = true
+    }
 }
 
 repositories {
@@ -52,6 +60,8 @@ dependencies {
     testImplementation "androidx.test:core-ktx:1.3.0"
     testImplementation "androidx.test.ext:junit:1.1.2"
     testImplementation "org.json:json:20180813"
+    testImplementation "org.hamcrest:hamcrest:2.2"
+    testImplementation "org.robolectric:robolectric:4.2.1"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
 
