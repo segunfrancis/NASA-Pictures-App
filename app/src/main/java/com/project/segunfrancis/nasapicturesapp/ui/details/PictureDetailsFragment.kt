@@ -59,6 +59,7 @@ class PictureDetailsFragment : Fragment() {
                     binding.photoViewPager.apply {
                         adapter = detailsPagerAdapter
                         setCurrentItem(args.position, false)
+                        setPageTransformer(ZoomOutPageTransformer())
                     }
                     Timber.d(result.data.toString())
                 }
