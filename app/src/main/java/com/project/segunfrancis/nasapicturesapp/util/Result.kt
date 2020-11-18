@@ -2,6 +2,8 @@ package com.project.segunfrancis.nasapicturesapp.util
 
 /**
  * Created by SegunFrancis
+ *
+ * Kotlin sealed class for state management
  */
 
 sealed class Result<out T> {
