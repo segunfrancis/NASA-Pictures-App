@@ -2,13 +2,13 @@ package com.project.segunfrancis.nasapicturesapp.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import com.project.segunfrancis.nasapicturesapp.R
 import com.project.segunfrancis.nasapicturesapp.databinding.ItemPictureBinding
 import com.project.segunfrancis.nasapicturesapp.model.NasaItem
+import com.project.segunfrancis.nasapicturesapp.util.PictureDiffUtil
 import com.project.segunfrancis.nasapicturesapp.util.loadImage
 
 /**
@@ -46,17 +46,4 @@ class PictureListAdapter(
             }
         }
     }
-}
-
-class PictureDiffUtil : DiffUtil.ItemCallback<NasaItem>() {
-
-    override fun areItemsTheSame(oldItem: NasaItem, newItem: NasaItem): Boolean {
-        return oldItem.explanation == newItem.explanation
-    }
-
-
-    override fun areContentsTheSame(oldItem: NasaItem, newItem: NasaItem): Boolean {
-        return oldItem == newItem
-    }
-
 }

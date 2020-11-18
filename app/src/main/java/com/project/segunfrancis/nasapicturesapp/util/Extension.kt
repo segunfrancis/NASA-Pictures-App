@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import coil.ImageLoader
 import coil.request.ImageRequest
@@ -39,3 +41,5 @@ fun View.makeVisible() {
 fun View.makeGone() {
     visibility = View.GONE
 }
+
+fun <T> MutableLiveData<T>.asLiveData() = this as LiveData<T>

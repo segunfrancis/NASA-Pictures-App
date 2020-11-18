@@ -7,9 +7,11 @@ import com.project.segunfrancis.nasapicturesapp.mapper.NasaItemMapper
 import com.project.segunfrancis.nasapicturesapp.model.NasaItem
 import com.project.segunfrancis.nasapicturesapp.util.Event
 import com.project.segunfrancis.nasapicturesapp.util.Result
+import com.project.segunfrancis.nasapicturesapp.util.asLiveData
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.io.InputStream
 
 /**
@@ -20,20 +22,34 @@ class NasaViewModel @ViewModelInject constructor(
     private val getDataUseCase: GetDataUseCase,
     private val inputStream: InputStream,
     private val mapper: NasaItemMapper,
-    dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    val pictureList: LiveData<Result<List<NasaItem>>> = liveData(dispatcher) {
-        getDataUseCase.execute(inputStream)
-            .catch {
-                emit(Result.Error(it))
-            }
-            .collect { items ->
-                emit(Result.Success(items.reversed().map {
-                    mapper.mapDomainToAppLayer(it)
-                }))
-            }
+    init {
+        getPictureList()
     }
 
-    val adapterPosition = MutableLiveData<Event<Int>>()
+    private val _pictureList = MutableLiveData<Result<List<NasaItem>>>()
+    val pictureList = _pictureList.asLiveData()
+
+    private val _adapterPosition = MutableLiveData<Event<Int>>()
+    val adapterPosition = _adapterPosition.asLiveData()
+
+    fun getPictureList() {
+        viewModelScope.launch(dispatcher) {
+            getDataUseCase.execute(inputStream)
+                .catch {
+                    _pictureList.postValue(Result.Error(it))
+                }
+                .collect { items ->
+                    _pictureList.postValue(Result.Success(items.reversed().map {
+                        mapper.mapDomainToAppLayer(it)
+                    }))
+                }
+        }
+    }
+
+    fun setAdapterPosition(position: Int) {
+        _adapterPosition.value = Event(position)
+    }
 }

@@ -6,6 +6,9 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+hilt {
+    enableTransformForLocalTests = true
+}
 
 android {
     compileSdkVersion 30
@@ -18,7 +21,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.project.segunfrancis.nasapicturesapp.CustomTestRunner"
     }
 
     buildTypes {
@@ -88,7 +91,19 @@ dependencies {
     // Lottie Animation
     implementation "com.airbnb.android:lottie:$lottie_version"
 
+    // Test
+    kaptTest "com.google.dagger:hilt-android-compiler:2.28-alpha"
     testImplementation "junit:junit:$junit_version"
+    testImplementation "org.mockito:mockito-core:2.23.0"
+    testImplementation "org.hamcrest:hamcrest:2.2"
+    testImplementation "com.google.dagger:hilt-android-testing:2.28-alpha"
+    testImplementation "androidx.test.ext:junit:$junit_ext_version"
+    testImplementation "org.robolectric:robolectric:4.2.1"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.28-alpha"
+    androidTestImplementation "org.hamcrest:hamcrest:2.2"
+    androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.28-alpha"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
 
