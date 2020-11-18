@@ -32,6 +32,9 @@ class NasaViewModel @ViewModelInject constructor(
     private val _pictureList = MutableLiveData<Result<List<NasaItem>>>()
     val pictureList = _pictureList.asLiveData()
 
+    private val _adapterPosition = MutableLiveData<Event<Int>>()
+    val adapterPosition = _adapterPosition.asLiveData()
+
     fun getPictureList() {
         viewModelScope.launch(dispatcher) {
             getDataUseCase.execute(inputStream)
@@ -46,6 +49,7 @@ class NasaViewModel @ViewModelInject constructor(
         }
     }
 
-
-    val adapterPosition = MutableLiveData<Event<Int>>()
+    fun setAdapterPosition(position: Int) {
+        _adapterPosition.value = Event(position)
+    }
 }

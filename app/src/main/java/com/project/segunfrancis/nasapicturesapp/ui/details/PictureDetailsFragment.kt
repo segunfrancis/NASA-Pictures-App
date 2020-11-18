@@ -113,7 +113,7 @@ class PictureDetailsFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        viewModel.adapterPosition.value = Event(binding.photoViewPager.currentItem)
+        viewModel.setAdapterPosition(binding.photoViewPager.currentItem)
     }
 
     override fun onDestroyView() {

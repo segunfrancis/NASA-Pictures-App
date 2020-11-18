@@ -14,6 +14,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.testing.*
 import kotlinx.coroutines.CoroutineDispatcher
+import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.nullValue
 import org.hamcrest.Matchers.not
 import org.junit.Assert.*
@@ -82,5 +83,23 @@ class NasaViewModelTest {
         val value = viewModel.pictureList.getOrAwaitValue()
         if (value is Result.Success)
             assert(value.data.isNotEmpty())
+    }
+
+    @Test
+    fun testSetAdapterPosition() {
+
+        val viewModel = NasaViewModel(getDataUseCase, inputStream, mapper, dispatcher)
+        viewModel.setAdapterPosition(2)
+        val expected = 2
+        val actual = viewModel.adapterPosition.getOrAwaitValue().peekContent()
+        assertThat(actual, `is`(expected))
+    }
+
+    @Test
+    fun testSetAdapterPosition_notNull() {
+
+        val viewModel = NasaViewModel(getDataUseCase, inputStream, mapper, dispatcher)
+        viewModel.setAdapterPosition(1)
+        assertThat(viewModel.adapterPosition.getOrAwaitValue(), not(nullValue()))
     }
 }
