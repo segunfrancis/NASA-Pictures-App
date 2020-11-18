@@ -15,6 +15,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureDetailsBinding
 import com.project.segunfrancis.nasapicturesapp.ui.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.*
+import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_FRAGMENT_TAG
 import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_KEY
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -47,7 +48,7 @@ class PictureDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (!preferences.getBoolean(ON_BOARDING_KEY, false)) { // Not seen onBoarding screen
-            OnBoardingFragment().show(childFragmentManager, "onBoarding_fragment")
+            OnBoardingFragment().show(childFragmentManager, ON_BOARDING_FRAGMENT_TAG)
         }
 
         val detailsPagerAdapter = DetailsPagerAdapter(imageLoader)

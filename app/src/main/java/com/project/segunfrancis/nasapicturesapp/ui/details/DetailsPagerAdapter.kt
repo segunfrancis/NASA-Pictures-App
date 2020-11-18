@@ -8,7 +8,7 @@ import coil.ImageLoader
 import com.project.segunfrancis.nasapicturesapp.R
 import com.project.segunfrancis.nasapicturesapp.databinding.ItemPictureDetailsBinding
 import com.project.segunfrancis.nasapicturesapp.model.NasaItem
-import com.project.segunfrancis.nasapicturesapp.ui.list.PictureDiffUtil
+import com.project.segunfrancis.nasapicturesapp.util.PictureDiffUtil
 import com.project.segunfrancis.nasapicturesapp.util.loadImage
 import com.project.segunfrancis.nasapicturesapp.util.makeGone
 
