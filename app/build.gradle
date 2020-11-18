@@ -66,6 +66,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "com.google.code.gson:gson:$gson_version"
     implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     //hilt for DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
