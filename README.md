@@ -37,7 +37,7 @@ It is written 100% in Kotlin with both unit and integrated tests.🙂
 * Because this project uses firebase crashyltics, create a new [Firebase](https://console.firebase.google.com/) project or download the `google-services.json` file from an existing firebase project.
 * Enable firebase crashlytics in your project console
 * Copy and paste the `google-services.json` file inside the app module of your project
-![google-services.json file location]()
+![google-services.json file location](https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/google-services-snip.PNG)
 * Build the project and run on an android device or emulator
 
 ## Architecture
@@ -47,12 +47,12 @@ The architecture of the project follows the principles of Clean Architecture and
 
 The app when run will show you a simple list of awesome pictures parsed from a json file.
 <p align="center">
-<img src="https://github.com/bufferapp/android-clean-architecture-boilerplate/blob/master/art/device_screenshot.png" alt="Drawing" style="width: 10px;"/>
+<img src="https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/Screenshot_20201119-215432_NASA%20Pictures%20app.jpg" alt="Drawing" style="width: 10px;"/>
 </p>
 
 Let's look at each of the architecture layers and the role each one plays :)
 
-![architecture]()
+![architecture](https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/clean%20arch%20graph.png)
 
 ### App module
 
@@ -73,10 +73,9 @@ The local layer contains the business logic that converts the input stream to a 
 ## Screens
 
 <ul>
-  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200811-190551_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen1" hspace="15">
-  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200811-190610_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen2" hspace="15">
-  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200811-190626_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen3" hspace="15">
-  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200813-192229_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen4" hspace="15">
+  <img src="https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/20201119_211044_edited_1.gif" width="40%" alt="Screen3" hspace="15">
+  <img src="https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/20201119_211358_edited_1.gif" width="40%" alt="Screen1" hspace="15">
+  <img src="https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/20201119_211621_edited_1.gif" width="40%" alt="Screen2" hspace="15">
 </ul>
 
 ## Appreciation
