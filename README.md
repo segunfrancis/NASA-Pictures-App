@@ -1,0 +1,87 @@
+# NASA-Pictures-App
+
+Welcome 👋 
+
+NASA Pictures App is an android app that displays awesome pictures parsed from a json file.
+
+It is written 100% in Kotlin with both unit and integrated tests.🙂
+
+## Languages, libraries and tools used
+
+* [Kotlin](https://kotlinlang.org/)
+* Android Support Libraries
+* [Coroutine](https://kotlinlang.org/docs/reference/coroutines-overview.html)
+* [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
+* [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+* [Coil](https://github.com/coil-kt/coil)
+* [OkHttp](http://square.github.io/okhttp/)
+* [Gson](https://github.com/google/gson)
+* [Timber](https://github.com/JakeWharton/timber)
+* [Firebase crashlytics](https://firebase.google.com/docs/crashlytics)
+* [Lottie](https://github.com/airbnb/lottie-android)
+* [JUnit](https://junit.org/junit4/)
+* [Mockito](http://site.mockito.org/)
+* [Robolectric](http://robolectric.org/)
+
+## Requirements
+
+* JDK 1.8
+* [Android SDK](https://developer.android.com/studio/index.html)
+* Android 11 ([API 30](https://developer.android.com/preview/api-overview.html))
+* Latest Android SDK Tools and build tools.
+
+## Installation
+
+* To run this code, clone this repository and import into android studio using this command
+`git clone https://github.com/segunfrancis/NASA-Pictures-App.git`
+* Because this project uses firebase crashyltics, create a new [Firebase](https://console.firebase.google.com/) project or download the `google-services.json` file from an existing firebase project.
+* Enable firebase crashlytics in your project console
+* Copy and paste the `google-services.json` file inside the app module of your project
+![google-services.json file location]()
+* Build the project and run on an android device or emulator
+
+## Architecture
+
+The architecture of the project follows the principles of Clean Architecture and MVVM. Here's how the project implements it:
+
+
+The app when run will show you a simple list of awesome pictures parsed from a json file.
+<p align="center">
+<img src="https://github.com/bufferapp/android-clean-architecture-boilerplate/blob/master/art/device_screenshot.png" alt="Drawing" style="width: 10px;"/>
+</p>
+
+Let's look at each of the architecture layers and the role each one plays :)
+
+![architecture]()
+
+### App module
+
+This layer makes use of the Android Framework and is used to create all of our UI components to display inside of the Main Activity. This layer contains the views(activities and fragments) and the ViewModel. The ViewModel receives its data from the use cases of the domain layer and then supplies the views.
+
+### Domain module
+
+The domain layer responsibility is to simply contain the UseCase instance used to retrieve data from the Data layer and pass it onto the Presentation layer.
+
+### Data Module
+
+The Data layer is our access point to external data layers and is used to fetch data from multiple sources (examples are cache and network in our case). In this case, it gets data from the local source only. It contains an implementation of the Repository.
+
+### Local Module
+
+The local layer contains the business logic that converts the input stream to a list of data that we can use. I was not able to parse the json file from this module because the `context` was returning `null` when I tried to access it from this layer. As a result, I parsed the json to an `InputStream` from the app module and sent the data to the local module where it was converted to a list.
+
+## Screens
+
+<ul>
+  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200811-190551_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen1" hspace="15">
+  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200811-190610_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen2" hspace="15">
+  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200811-190626_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen3" hspace="15">
+  <img src="https://github.com/segunfrancis/Yet-Another-Todo-App/blob/master/screenshots/Screenshot_20200813-192229_Yet%20Another%20Todo%20App.jpg" width="40%" alt="Screen4" hspace="15">
+</ul>
+
+## Appreciation
+* [Jed Nocum](https://lottiefiles.com/17651-swipe-left-to-right) - Lottie Animation
+
+## Author
+
+* [Segun Francis](https://www.linkedin.com/in/segun-francis-302361a1)
