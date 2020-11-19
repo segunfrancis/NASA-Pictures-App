@@ -26,8 +26,8 @@ class LocalDataSourceTest {
     @get:Rule
     val coroutineRule: MainCoroutineRule = MainCoroutineRule()
 
-    lateinit var dataSourceImpl: LocalDataSourceImpl
-    lateinit var inputStream: InputStream
+    private lateinit var dataSourceImpl: LocalDataSourceImpl
+    private lateinit var inputStream: InputStream
 
     @Before
     fun setup() {
