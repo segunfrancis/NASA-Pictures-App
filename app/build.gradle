@@ -4,8 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
+
 hilt {
     enableTransformForLocalTests = true
 }
@@ -79,11 +78,6 @@ dependencies {
 
     // Multidex
     implementation "androidx.multidex:multidex:$multidex_version"
-
-    // Firebase crashlytics
-    implementation platform("com.google.firebase:firebase-bom:$firebase_version")
-    implementation "com.google.firebase:firebase-crashlytics"
-    implementation "com.google.firebase:firebase-analytics-ktx"
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
