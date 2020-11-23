@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.ImageLoader
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.project.segunfrancis.nasapicturesapp.R
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureListBinding
 import com.project.segunfrancis.nasapicturesapp.ui.NasaViewModel
@@ -41,7 +40,8 @@ class PictureListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val pictureAdapter = PictureListAdapter(imageLoader) {
-            val direction = PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(it)
+            val direction =
+                PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(it)
             findNavController().navigate(direction)
         }
         viewModel.pictureList.observe(viewLifecycleOwner) { result ->
@@ -51,14 +51,14 @@ class PictureListFragment : Fragment() {
                     Timber.d(result.data.toString())
                 }
                 is Error -> {
+                    val error = result.error
                     Toast.makeText(
                         requireContext(),
-                        result.error.localizedMessage,
+                        error.localizedMessage,
                         Toast.LENGTH_LONG
                     )
                         .show()
-                    FirebaseCrashlytics.getInstance()
-                        .recordException(result.error) // Log exception to remote server
+                    Timber.e(error)
                 }
             }
         }

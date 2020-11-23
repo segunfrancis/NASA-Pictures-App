@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import coil.ImageLoader
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureDetailsBinding
 import com.project.segunfrancis.nasapicturesapp.ui.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.*
@@ -33,6 +32,7 @@ class PictureDetailsFragment : Fragment() {
 
     @Inject
     lateinit var imageLoader: ImageLoader
+
     @Inject
     lateinit var preferences: SharedPreferences
 
@@ -65,14 +65,14 @@ class PictureDetailsFragment : Fragment() {
                     Timber.d(result.data.toString())
                 }
                 is Result.Error -> {
+                    val error = result.error
                     Toast.makeText(
                         requireContext(),
-                        result.error.localizedMessage,
+                        error.localizedMessage,
                         Toast.LENGTH_LONG
                     )
                         .show()
-                    FirebaseCrashlytics.getInstance()
-                        .recordException(result.error) // Log exception to remote server
+                    Timber.e(error)
                 }
             }
         }

@@ -17,7 +17,6 @@ It is written 100% in Kotlin with both unit and integrated tests.🙂
 * [OkHttp](http://square.github.io/okhttp/)
 * [Gson](https://github.com/google/gson)
 * [Timber](https://github.com/JakeWharton/timber)
-* [Firebase crashlytics](https://firebase.google.com/docs/crashlytics)
 * [Lottie](https://github.com/airbnb/lottie-android)
 * [JUnit](https://junit.org/junit4/)
 * [Mockito](http://site.mockito.org/)
@@ -32,12 +31,8 @@ It is written 100% in Kotlin with both unit and integrated tests.🙂
 
 ## Installation
 
-* To run this code, clone this repository and import into android studio using this command
-`git clone https://github.com/segunfrancis/NASA-Pictures-App.git`
-* Because this project uses firebase crashyltics, create a new [Firebase](https://console.firebase.google.com/) project or download the `google-services.json` file from an existing firebase project.
-* Enable firebase crashlytics in your project console
-* Copy and paste the `google-services.json` file inside the app module of your project
-![google-services.json file location](https://github.com/segunfrancis/NASA-Pictures-App/blob/master/art/google-services-snip.PNG)
+* To run this code, clone this repository using this command `git clone https://github.com/segunfrancis/NASA-Pictures-App.git`
+* Import into android studio
 * Build the project and run on an android device or emulator
 
 ## Architecture
