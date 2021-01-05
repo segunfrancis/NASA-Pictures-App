@@ -27,7 +27,7 @@ class OnBoardingFragment : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentOnboardingBinding.inflate(layoutInflater)
         return binding.root
     }

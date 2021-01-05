@@ -32,5 +32,13 @@
         android:id="@+id/bookmarkFragment"
         android:name="com.project.segunfrancis.nasapicturesapp.ui.bookmark.BookmarkFragment"
         android:label="@string/text_bookmarks"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_bookmarkFragment_to_pictureDetailsFragment"
+            app:destination="@id/pictureDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

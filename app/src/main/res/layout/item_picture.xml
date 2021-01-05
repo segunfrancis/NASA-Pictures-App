@@ -39,5 +39,16 @@
             app:layout_constraintEnd_toEndOf="@id/photo_thumbnail"
             app:layout_constraintStart_toStartOf="@id/photo_thumbnail"
             tools:text="Nebulla Major kosf sdufuoasf dnfis dfdanf fanno fnnfa" />
+
+        <com.like.LikeButton
+            android:id="@+id/bookmark_icon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_margin="8dp"
+            app:icon_size="42dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:like_drawable="@drawable/ic_bookmark"
+            app:unlike_drawable="@drawable/ic_unbookmark" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

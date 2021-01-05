@@ -14,4 +14,10 @@ class NasaItemMapper @Inject constructor(): Mapper<NasaItemDomain, NasaItem> {
             NasaItem(copyright, date, explanation, hdurl, media_type, service_version, title, url)
         }
     }
+
+    override fun mapAppToDomainLayer(data: NasaItem): NasaItemDomain {
+        return with(data) {
+            NasaItemDomain(copyright, date, explanation, hdurl, media_type, service_version, title, url)
+        }
+    }
 }

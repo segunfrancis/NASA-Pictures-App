@@ -10,8 +10,11 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.ImageLoader
 import com.project.segunfrancis.nasapicturesapp.R
+import com.project.segunfrancis.nasapicturesapp.adapter.PictureListAdapter
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureListBinding
+import com.project.segunfrancis.nasapicturesapp.util.EventObserver
 import com.project.segunfrancis.nasapicturesapp.util.Result.*
+import com.project.segunfrancis.nasapicturesapp.util.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -38,11 +41,20 @@ class PictureListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val pictureAdapter = PictureListAdapter(imageLoader) {
+        val pictureAdapter = PictureListAdapter(imageLoader, { position ->
             val direction =
-                PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(it)
+                PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(position)
             findNavController().navigate(direction)
-        }
+        }, { likedNasaItem ->
+            viewModel.addBookmark(likedNasaItem)
+        }, { unlikedNasaItem ->
+            viewModel.removeBookmark(unlikedNasaItem)
+        }, { likeButton, nasaItem ->
+            viewModel.isBookmark(nasaItem).observe(viewLifecycleOwner) {
+                likeButton.isLiked = it
+            }
+        })
+
         viewModel.pictureList.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Success -> {
@@ -61,6 +73,9 @@ class PictureListFragment : Fragment() {
                 }
             }
         }
+        viewModel.bookmarkMessage.observe(viewLifecycleOwner, EventObserver {
+            binding.root.showMessage(it)
+        })
         binding.pictureListRecyclerView.apply {
             adapter = pictureAdapter
             layoutManager =
