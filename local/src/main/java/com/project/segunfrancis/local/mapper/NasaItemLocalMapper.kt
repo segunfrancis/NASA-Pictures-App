@@ -23,4 +23,19 @@ class NasaItemLocalMapper @Inject constructor() : Mapper<NasaItemLocal, NasaItem
             )
         }
     }
+
+    override fun mapDataToLocal(data: NasaItemData): NasaItemLocal {
+        return with(data) {
+            NasaItemLocal(
+                copyright,
+                date,
+                explanation,
+                hdurl,
+                media_type,
+                service_version,
+                title,
+                url
+            )
+        }
+    }
 }

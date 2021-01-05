@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import coil.ImageLoader
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureDetailsBinding
-import com.project.segunfrancis.nasapicturesapp.ui.NasaViewModel
+import com.project.segunfrancis.nasapicturesapp.ui.list.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.*
 import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_FRAGMENT_TAG
 import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_KEY
@@ -39,7 +39,7 @@ class PictureDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPictureDetailsBinding.inflate(layoutInflater)
         return binding.root
     }

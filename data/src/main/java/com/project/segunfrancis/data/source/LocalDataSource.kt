@@ -9,4 +9,10 @@ import java.io.InputStream
  */
 interface LocalDataSource {
     fun getData(inputStream: InputStream): Flow<List<NasaItemData>>
+    fun addBookmark(nasaItemData: NasaItemData): Flow<Unit>
+    fun getAllBookmarks(): Flow<List<NasaItemData>>
+    fun removeBookmark(nasaItemData: NasaItemData): Flow<Unit>
+    fun isBookmarked(date: String): Flow<Boolean>
+    fun addBookmarkToSharedPref(date: String): Flow<Unit>
+    fun removeBookmarkFromSharedPref(date: String): Flow<Unit>
 }

@@ -7,6 +7,10 @@ import java.io.InputStream
 /**
  * Created by SegunFrancis
  */
+
 interface LocalRepository {
     fun getData(inputStream: InputStream): Flow<List<NasaItemDomain>>
+    fun addBookmark(nasaItemDomain: NasaItemDomain): Flow<Unit>
+    fun getAllBookmarks(): Flow<List<NasaItemDomain>>
+    fun removeBookmark(nasaItemDomain: NasaItemDomain): Flow<Unit>
 }

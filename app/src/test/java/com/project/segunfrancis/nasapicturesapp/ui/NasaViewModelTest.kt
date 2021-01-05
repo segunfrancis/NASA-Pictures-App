@@ -7,6 +7,7 @@ import com.project.segunfrancis.domain.repository.LocalRepository
 import com.project.segunfrancis.domain.usecase.GetDataUseCase
 import com.project.segunfrancis.nasapicturesapp.getOrAwaitValue
 import com.project.segunfrancis.nasapicturesapp.mapper.NasaItemMapper
+import com.project.segunfrancis.nasapicturesapp.ui.list.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.Result
 import dagger.Module
 import dagger.Provides

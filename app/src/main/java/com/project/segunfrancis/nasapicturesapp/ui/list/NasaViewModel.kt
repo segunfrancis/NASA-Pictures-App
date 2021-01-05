@@ -1,4 +1,4 @@
-package com.project.segunfrancis.nasapicturesapp.ui
+package com.project.segunfrancis.nasapicturesapp.ui.list
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*

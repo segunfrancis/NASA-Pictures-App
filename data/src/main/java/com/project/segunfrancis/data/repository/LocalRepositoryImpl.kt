@@ -25,4 +25,20 @@ class LocalRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override fun addBookmark(nasaItemDomain: NasaItemDomain): Flow<Unit> {
+        return nasaDataSourceFactory.local().addBookmark(nasaItemMapper.mapDomainToData(nasaItemDomain))
+    }
+
+    override fun getAllBookmarks(): Flow<List<NasaItemDomain>> {
+        return nasaDataSourceFactory.local().getAllBookmarks().map { bookmarks ->
+            bookmarks.map {
+                nasaItemMapper.mapDataToDomain(it)
+            }
+        }
+    }
+
+    override fun removeBookmark(nasaItemDomain: NasaItemDomain): Flow<Unit> {
+        return nasaDataSourceFactory.local().removeBookmark(nasaItemMapper.mapDomainToData(nasaItemDomain))
+    }
 }
