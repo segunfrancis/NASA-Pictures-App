@@ -20,7 +20,7 @@ import java.io.InputStream
  * Created by SegunFrancis
  */
 
-class NasaViewModel @ViewModelInject constructor(
+class PictureListViewModel @ViewModelInject constructor(
     private val getDataUseCase: GetDataUseCase,
     private val addBookmarkUseCase: AddBookmarkUseCase,
     private val removeBookmarkUseCase: RemoveBookmarkUseCase,
@@ -39,13 +39,10 @@ class NasaViewModel @ViewModelInject constructor(
     private val _pictureList = MutableLiveData<Result<List<NasaItem>>>()
     val pictureList get() = _pictureList.asLiveData()
 
-    private val _adapterPosition = MutableLiveData<Event<Int>>()
-    val adapterPosition get() =  _adapterPosition.asLiveData()
-
     private val _bookmarkMessage = MutableLiveData<Event<Message>>()
     val bookmarkMessage get() = _bookmarkMessage.asLiveData()
 
-    fun getPictureList() {
+    private fun getPictureList() {
         viewModelScope.launch(dispatcher) {
             getDataUseCase.execute(inputStream)
                 .catch {
@@ -57,10 +54,6 @@ class NasaViewModel @ViewModelInject constructor(
                     }))
                 }
         }
-    }
-
-    fun setAdapterPosition(position: Int) {
-        _adapterPosition.value = Event(position)
     }
 
     fun addBookmark(nasaItem: NasaItem) {

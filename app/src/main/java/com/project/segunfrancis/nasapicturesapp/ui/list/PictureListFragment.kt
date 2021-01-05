@@ -13,6 +13,7 @@ import com.project.segunfrancis.nasapicturesapp.R
 import com.project.segunfrancis.nasapicturesapp.adapter.PictureListAdapter
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureListBinding
 import com.project.segunfrancis.nasapicturesapp.util.EventObserver
+import com.project.segunfrancis.nasapicturesapp.util.Origin
 import com.project.segunfrancis.nasapicturesapp.util.Result.*
 import com.project.segunfrancis.nasapicturesapp.util.showMessage
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +25,7 @@ class PictureListFragment : Fragment() {
 
     private var _binding: FragmentPictureListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NasaViewModel by viewModels()
+    private val viewModel: PictureListViewModel by viewModels()
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -43,7 +44,10 @@ class PictureListFragment : Fragment() {
 
         val pictureAdapter = PictureListAdapter(imageLoader, { position ->
             val direction =
-                PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(position)
+                PictureListFragmentDirections.actionPictureListFragmentToPictureDetailsFragment(
+                    position,
+                    Origin.PICTURE_LIST_FRAGMENT
+                )
             findNavController().navigate(direction)
         }, { likedNasaItem ->
             viewModel.addBookmark(likedNasaItem)

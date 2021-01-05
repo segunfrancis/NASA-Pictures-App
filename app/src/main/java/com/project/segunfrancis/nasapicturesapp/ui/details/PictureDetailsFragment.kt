@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import coil.ImageLoader
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentPictureDetailsBinding
-import com.project.segunfrancis.nasapicturesapp.ui.list.NasaViewModel
 import com.project.segunfrancis.nasapicturesapp.util.*
 import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_FRAGMENT_TAG
 import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_KEY
@@ -25,7 +24,7 @@ class PictureDetailsFragment : Fragment() {
 
     private var _binding: FragmentPictureDetailsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NasaViewModel by viewModels()
+    private val viewModel: PictureDetailsViewModel by viewModels()
     private val args: PictureDetailsFragmentArgs by navArgs()
     private var currentPage: Int = 0
     private var size: Int = 0
@@ -52,6 +51,11 @@ class PictureDetailsFragment : Fragment() {
         }
 
         val detailsPagerAdapter = DetailsPagerAdapter(imageLoader)
+        if (args.origin == Origin.PICTURE_LIST_FRAGMENT) {
+            viewModel.getPictureList()
+        } else {
+            viewModel.getAllBookmarks()
+        }
         viewModel.pictureList.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {

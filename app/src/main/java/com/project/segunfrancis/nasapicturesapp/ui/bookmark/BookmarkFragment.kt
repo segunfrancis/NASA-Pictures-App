@@ -14,6 +14,7 @@ import com.project.segunfrancis.nasapicturesapp.R
 import com.project.segunfrancis.nasapicturesapp.adapter.PictureListAdapter
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentBookmarkBinding
 import com.project.segunfrancis.nasapicturesapp.util.EventObserver
+import com.project.segunfrancis.nasapicturesapp.util.Origin
 import com.project.segunfrancis.nasapicturesapp.util.Result
 import com.project.segunfrancis.nasapicturesapp.util.showMessage
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +46,10 @@ class BookmarkFragment : Fragment() {
             imageLoader,
             { position ->
                 val directions =
-                    BookmarkFragmentDirections.actionBookmarkFragmentToPictureDetailsFragment(position)
+                    BookmarkFragmentDirections.actionBookmarkFragmentToPictureDetailsFragment(
+                        position,
+                        Origin.BOOKMARK_FRAGMENT
+                    )
                 findNavController().navigate(directions)
             },
             { likedNasaItem ->

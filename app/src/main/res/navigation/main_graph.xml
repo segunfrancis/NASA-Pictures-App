@@ -27,6 +27,9 @@
             android:name="position"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="origin"
+            app:argType="com.project.segunfrancis.nasapicturesapp.util.Origin" />
     </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"

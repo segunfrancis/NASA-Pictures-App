@@ -4,10 +4,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.project.segunfrancis.data.repository.LocalRepositoryImpl
 import com.project.segunfrancis.domain.repository.LocalRepository
+import com.project.segunfrancis.domain.usecase.GetAllBookmarksUseCase
 import com.project.segunfrancis.domain.usecase.GetDataUseCase
 import com.project.segunfrancis.nasapicturesapp.getOrAwaitValue
 import com.project.segunfrancis.nasapicturesapp.mapper.NasaItemMapper
-import com.project.segunfrancis.nasapicturesapp.ui.list.NasaViewModel
+import com.project.segunfrancis.nasapicturesapp.ui.details.PictureDetailsViewModel
 import com.project.segunfrancis.nasapicturesapp.util.Result
 import dagger.Module
 import dagger.Provides
@@ -36,7 +37,7 @@ import javax.inject.Inject
 @HiltAndroidTest
 @Config(application = HiltTestApplication::class)
 @RunWith(AndroidJUnit4::class)
-class NasaViewModelTest {
+class PictureListViewModelTest {
 
     @Module
     @InstallIn(ActivityRetainedComponent::class)
@@ -58,6 +59,7 @@ class NasaViewModelTest {
     val localRepository: LocalRepository = mock(LocalRepository::class.java)
 
     @Inject lateinit var getDataUseCase: GetDataUseCase
+    @Inject lateinit var getAllBookmarksUseCase: GetAllBookmarksUseCase
     @Inject lateinit var inputStream: InputStream
     @Inject lateinit var mapper: NasaItemMapper
     @Inject lateinit var dispatcher: CoroutineDispatcher
@@ -70,7 +72,7 @@ class NasaViewModelTest {
     @Test
     fun testGetPictureList() {
 
-        val viewModel = NasaViewModel(getDataUseCase, inputStream, mapper, dispatcher)
+        val viewModel = PictureDetailsViewModel(getDataUseCase, getAllBookmarksUseCase, inputStream, mapper, dispatcher)
         viewModel.getPictureList()
         val value = viewModel.pictureList.getOrAwaitValue()
         assertThat(value, not(nullValue()))
@@ -79,7 +81,7 @@ class NasaViewModelTest {
     @Test
     fun testGetPictureList_isNotEmpty() {
 
-        val viewModel = NasaViewModel(getDataUseCase, inputStream, mapper, dispatcher)
+        val viewModel = PictureDetailsViewModel(getDataUseCase, getAllBookmarksUseCase, inputStream, mapper, dispatcher)
         viewModel.getPictureList()
         val value = viewModel.pictureList.getOrAwaitValue()
         if (value is Result.Success)
@@ -89,7 +91,7 @@ class NasaViewModelTest {
     @Test
     fun testSetAdapterPosition() {
 
-        val viewModel = NasaViewModel(getDataUseCase, inputStream, mapper, dispatcher)
+        val viewModel = PictureDetailsViewModel(getDataUseCase, getAllBookmarksUseCase, inputStream, mapper, dispatcher)
         viewModel.setAdapterPosition(2)
         val expected = 2
         val actual = viewModel.adapterPosition.getOrAwaitValue().peekContent()
@@ -99,7 +101,7 @@ class NasaViewModelTest {
     @Test
     fun testSetAdapterPosition_notNull() {
 
-        val viewModel = NasaViewModel(getDataUseCase, inputStream, mapper, dispatcher)
+        val viewModel = PictureDetailsViewModel(getDataUseCase, getAllBookmarksUseCase, inputStream, mapper, dispatcher)
         viewModel.setAdapterPosition(1)
         assertThat(viewModel.adapterPosition.getOrAwaitValue(), not(nullValue()))
     }
