@@ -8,7 +8,6 @@ import com.project.segunfrancis.local.mapper.NasaItemLocalMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import java.io.InputStream
 import javax.inject.Inject
 
 /**
@@ -22,35 +21,27 @@ class LocalDataSourceImpl @Inject constructor(
     private val preferenceHelper: PreferenceHelper
 ) : LocalDataSource {
 
-    override fun getData(inputStream: InputStream): Flow<List<NasaItemData>> {
+    override fun getData(): Flow<List<NasaItemData>> {
         return flow {
-            emit(nasaBusinessLogic.getData(inputStream).map { item ->
-                mapper.mapLocalToData(item)
-            })
+            emit(nasaBusinessLogic().map { item -> mapper.mapLocalToData(item) })
         }
     }
 
     override fun addBookmark(nasaItemData: NasaItemData): Flow<Unit> {
         return flow {
-            emit(
-                database.dao().addBookmark(mapper.mapDataToLocal(nasaItemData))
-            )
+            emit(database.dao().addBookmark(mapper.mapDataToLocal(nasaItemData)))
         }
     }
 
     override fun getAllBookmarks(): Flow<List<NasaItemData>> {
         return database.dao().getAllBookmarks().map { items ->
-            items.map {
-                mapper.mapLocalToData(it)
-            }
+            items.map { mapper.mapLocalToData(it) }
         }
     }
 
     override fun removeBookmark(nasaItemData: NasaItemData): Flow<Unit> {
         return flow {
-            emit(
-                database.dao().removeBookmark(mapper.mapDataToLocal(nasaItemData))
-            )
+            emit(database.dao().removeBookmark(mapper.mapDataToLocal(nasaItemData)))
         }
     }
 

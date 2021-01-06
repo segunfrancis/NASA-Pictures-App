@@ -25,25 +25,22 @@ class NasaBusinessLogicTest {
 
     @Test
     fun testGetData() {
-        val logic = NasaBusinessLogic()
-        val inputStream = context.assets.open("data.json")
-        val data = logic.getData(inputStream)
+        val logic = NasaBusinessLogic(context)
+        val data = logic()
         assertNotNull(data)
     }
 
     @Test(expected = FileNotFoundException::class)
     fun testGetData_wrongFileName() {
-        val logic = NasaBusinessLogic()
-        val inputStream = context.assets.open("data")
-        val data = logic.getData(inputStream)
+        val logic = NasaBusinessLogic(context)
+        val data = logic()
         assertNotNull(data)
     }
 
     @Test(expected = FileNotFoundException::class)
     fun testGetData_emptyFileName() {
-        val logic = NasaBusinessLogic()
-        val inputStream = context.assets.open("")
-        val data = logic.getData(inputStream)
+        val logic = NasaBusinessLogic(context)
+        val data = logic()
         assertNotNull(data)
     }
 }

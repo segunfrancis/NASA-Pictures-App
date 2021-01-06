@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
-import java.io.InputStream
 
 /**
  * Created by SegunFrancis
@@ -27,7 +26,6 @@ class PictureListViewModel @ViewModelInject constructor(
     private val addBookmarkToSharedPrefUseCase: AddBookmarkToSharedPrefUseCase,
     private val removeBookmarkFromSharedPrefUseCase: RemoveBookmarkFromSharedPrefUseCase,
     private val isBookmarkUseCase: IsBookmarkUseCase,
-    private val inputStream: InputStream,
     private val mapper: NasaItemMapper,
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
@@ -44,7 +42,7 @@ class PictureListViewModel @ViewModelInject constructor(
 
     private fun getPictureList() {
         viewModelScope.launch(dispatcher) {
-            getDataUseCase.execute(inputStream)
+            getDataUseCase()
                 .catch {
                     _pictureList.postValue(Result.Error(it))
                 }

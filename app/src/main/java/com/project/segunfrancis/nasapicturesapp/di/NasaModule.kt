@@ -13,7 +13,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
-import java.io.InputStream
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -54,11 +53,6 @@ class NasaModule {
     @Provides
     fun provideCoroutineDispatcher(): CoroutineDispatcher {
         return Dispatchers.IO
-    }
-
-    @Provides
-    fun provideInputStream(@ApplicationContext context: Context): InputStream {
-        return context.assets.open("data.json")
     }
 
     @Provides

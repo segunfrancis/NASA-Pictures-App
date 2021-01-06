@@ -14,12 +14,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.io.InputStream
 
 class PictureDetailsViewModel @ViewModelInject constructor(
     private val getDataUseCase: GetDataUseCase,
     private val getAllBookmarksUseCase: GetAllBookmarksUseCase,
-    private val inputStream: InputStream,
     private val mapper: NasaItemMapper,
     private val dispatcher: CoroutineDispatcher
 ): ViewModel() {
@@ -32,7 +30,7 @@ class PictureDetailsViewModel @ViewModelInject constructor(
 
     fun getPictureList() {
         viewModelScope.launch(dispatcher) {
-            getDataUseCase.execute(inputStream)
+            getDataUseCase()
                 .catch { _pictureList.postValue(Result.Error(it)) }
                 .collect { items ->
                     _pictureList.postValue(Result.Success(items.reversed().map {

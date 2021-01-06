@@ -1,9 +1,9 @@
 package com.project.segunfrancis.local.source
 
+import android.content.Context
 import com.google.gson.Gson
 import com.project.segunfrancis.local.model.NasaItemLocal
 import org.json.JSONArray
-import java.io.InputStream
 import java.nio.charset.Charset
 import javax.inject.Inject
 
@@ -11,9 +11,10 @@ import javax.inject.Inject
  * Created by SegunFrancis
  */
 
-class NasaBusinessLogic @Inject constructor() {
+class NasaBusinessLogic @Inject constructor(private val context: Context) {
 
-    fun getData(inputStream: InputStream): List<NasaItemLocal> {
+    operator fun invoke(): List<NasaItemLocal> {
+        val inputStream = context.assets.open("data.json")
         val nasaInfo = mutableListOf<NasaItemLocal>()
         val size = inputStream.available()
         val buffer = ByteArray(size)

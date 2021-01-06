@@ -13,7 +13,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.InputStream
 
 /**
  * Created by SegunFrancis
@@ -27,20 +26,20 @@ class LocalDataSourceTest {
     val coroutineRule: MainCoroutineRule = MainCoroutineRule()
 
     private lateinit var dataSourceImpl: LocalDataSourceImpl
-    private lateinit var inputStream: InputStream
+    lateinit var context: Context
 
     @Before
     fun setup() {
+        context = ApplicationProvider.getApplicationContext()
         val mapper = NasaItemLocalMapper()
-        val businessLogic = NasaBusinessLogic()
-        dataSourceImpl = LocalDataSourceImpl(mapper, businessLogic)
-        inputStream = ApplicationProvider.getApplicationContext<Context>().assets.open("data.json")
+        val businessLogic = NasaBusinessLogic(context)
+        //dataSourceImpl = LocalDataSourceImpl(mapper, businessLogic)
     }
 
     @Test
     fun testGetData() {
 
-        val data = dataSourceImpl.getData(inputStream)
+        val data = dataSourceImpl.getData()
 
         assertNotNull(data)
     }
@@ -48,7 +47,7 @@ class LocalDataSourceTest {
     @Test
     fun testGetData_listNotEmpty() = coroutineRule.runBlockingTest {
 
-        val data = dataSourceImpl.getData(inputStream)
+        val data = dataSourceImpl.getData()
         data.collect {
             assert(it.isNotEmpty())
         }
