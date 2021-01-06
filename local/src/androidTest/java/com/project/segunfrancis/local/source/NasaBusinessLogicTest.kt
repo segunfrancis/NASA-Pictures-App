@@ -7,7 +7,6 @@ import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.FileNotFoundException
 
 /**
  * Created by SegunFrancis
@@ -25,20 +24,6 @@ class NasaBusinessLogicTest {
 
     @Test
     fun testGetData() {
-        val logic = NasaBusinessLogic(context)
-        val data = logic()
-        assertNotNull(data)
-    }
-
-    @Test(expected = FileNotFoundException::class)
-    fun testGetData_wrongFileName() {
-        val logic = NasaBusinessLogic(context)
-        val data = logic()
-        assertNotNull(data)
-    }
-
-    @Test(expected = FileNotFoundException::class)
-    fun testGetData_emptyFileName() {
         val logic = NasaBusinessLogic(context)
         val data = logic()
         assertNotNull(data)

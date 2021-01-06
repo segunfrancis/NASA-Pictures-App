@@ -1,6 +1,7 @@
-package com.project.segunfrancis.local.model
+package com.project.segunfrancis.local.db
 
 import androidx.room.*
+import com.project.segunfrancis.local.model.NasaItemLocal
 import kotlinx.coroutines.flow.Flow
 
 /**
