@@ -22,15 +22,19 @@ class LocalDataSourceImpl @Inject constructor(
 ) : LocalDataSource {
 
     override fun getData(): Flow<List<NasaItemData>> {
-        return flow {
-            emit(nasaBusinessLogic().map { item -> mapper.mapLocalToData(item) })
-        }
+        return flow { emit(nasaBusinessLogic().map { item -> mapper.mapLocalToData(item) }) }
+    }
+
+    override fun hasUserSeenOnBoarding(): Flow<Boolean> {
+        return flow { emit(preferenceHelper.hasUserSeenOnBoarding()) }
+    }
+
+    override fun setUserHasSeenOnBoarding(value: Boolean): Flow<Unit> {
+        return flow { emit(preferenceHelper.setUserHasSeenOnBoarding(value)) }
     }
 
     override fun addBookmark(nasaItemData: NasaItemData): Flow<Unit> {
-        return flow {
-            emit(database.dao().addBookmark(mapper.mapDataToLocal(nasaItemData)))
-        }
+        return flow { emit(database.dao().addBookmark(mapper.mapDataToLocal(nasaItemData))) }
     }
 
     override fun getAllBookmarks(): Flow<List<NasaItemData>> {

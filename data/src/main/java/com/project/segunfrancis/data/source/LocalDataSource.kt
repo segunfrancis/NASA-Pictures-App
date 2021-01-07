@@ -9,10 +9,20 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalDataSource {
     fun getData(): Flow<List<NasaItemData>>
+
+    fun hasUserSeenOnBoarding(): Flow<Boolean>
+
+    fun setUserHasSeenOnBoarding(value: Boolean): Flow<Unit>
+
     fun addBookmark(nasaItemData: NasaItemData): Flow<Unit>
+
     fun getAllBookmarks(): Flow<List<NasaItemData>>
+
     fun removeBookmark(nasaItemData: NasaItemData): Flow<Unit>
+
     fun isBookmarked(date: String): Flow<Boolean>
+
     fun addBookmarkToSharedPref(date: String): Flow<Unit>
+
     fun removeBookmarkFromSharedPref(date: String): Flow<Unit>
 }

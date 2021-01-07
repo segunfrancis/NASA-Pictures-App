@@ -1,16 +1,14 @@
 package com.project.segunfrancis.nasapicturesapp.ui.details
 
 import android.content.DialogInterface
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentOnboardingBinding
-import com.project.segunfrancis.nasapicturesapp.util.AppConstants.ON_BOARDING_KEY
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 /**
  * Created by SegunFrancis
@@ -21,7 +19,7 @@ class OnBoardingFragment : DialogFragment() {
 
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
-    @Inject lateinit var preferences: SharedPreferences
+    private val viewModel: PictureDetailsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,9 +38,7 @@ class OnBoardingFragment : DialogFragment() {
     }
 
     override fun onDismiss(dialog: DialogInterface) {
-        val editor = preferences.edit()
-        editor.putBoolean(ON_BOARDING_KEY, true)
-        editor.apply()
+        viewModel.setUserHasSeenOnBoarding(true)
 
         super.onDismiss(dialog)
     }

@@ -4,5 +4,5 @@ object LocalConstants {
 
     const val SHARED_PREF_KEY: String = "com.project.segunfrancis.local.pref_key"
 
-    const val BOOKMARK_KEY: String = "com.project.segunfrancis.local_bookmark"
+    const val ON_BOARDING_KEY: String = "on_boarding_key"
 }
