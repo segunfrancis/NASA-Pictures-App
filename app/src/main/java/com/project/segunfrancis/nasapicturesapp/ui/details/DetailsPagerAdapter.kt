@@ -39,10 +39,10 @@ class DetailsPagerAdapter(
             titleText.text = item.title
             dateText.text = item.date
             explanationText.text = item.explanation
-            detailPhoto.loadImage(imageLoader, item.hdurl)
+            detailPhoto.loadImage(imageLoader, item.url)
             copyrightText.text = item.copyright
             if (item.copyright == null) {
-                text4.makeGone()
+                copyrightSymbol.makeGone()
             }
         }
     }

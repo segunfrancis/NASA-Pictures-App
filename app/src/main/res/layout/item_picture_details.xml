@@ -23,7 +23,7 @@
             tools:src="@drawable/header" />
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/title"
             style="@style/SubText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,13 +42,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/abeezee"
-            app:layout_constraintEnd_toEndOf="@id/text"
-            app:layout_constraintStart_toStartOf="@id/text"
-            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="The judge of the jungle" />
 
         <TextView
-            android:id="@+id/text2"
+            android:id="@+id/date"
             style="@style/SubText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -63,13 +63,13 @@
             style="@style/MainText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/text2"
-            app:layout_constraintStart_toStartOf="@id/text2"
-            app:layout_constraintTop_toBottomOf="@id/text2"
+            app:layout_constraintEnd_toEndOf="@id/date"
+            app:layout_constraintStart_toStartOf="@id/date"
+            app:layout_constraintTop_toBottomOf="@id/date"
             tools:text="2011:12:9" />
 
         <TextView
-            android:id="@+id/text3"
+            android:id="@+id/explanation"
             style="@style/SubText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -84,14 +84,14 @@
             style="@style/MainText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/text4"
-            app:layout_constraintEnd_toEndOf="@id/text3"
-            app:layout_constraintStart_toStartOf="@id/text3"
-            app:layout_constraintTop_toBottomOf="@id/text3"
+            app:layout_constraintBottom_toTopOf="@id/copyright_symbol"
+            app:layout_constraintEnd_toEndOf="@id/explanation"
+            app:layout_constraintStart_toStartOf="@id/explanation"
+            app:layout_constraintTop_toBottomOf="@id/explanation"
             tools:text="Phasellus gravida semper nisi. Vivamus elementum semper nisi. Cras non dolor." />
 
         <TextView
-            android:id="@+id/text4"
+            android:id="@+id/copyright_symbol"
             style="@style/MainText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,10 +107,10 @@
             style="@style/MainText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/text4"
+            app:layout_constraintBottom_toBottomOf="@+id/copyright_symbol"
             app:layout_constraintEnd_toEndOf="@+id/explanation_text"
-            app:layout_constraintStart_toEndOf="@+id/text4"
-            app:layout_constraintTop_toTopOf="@+id/text4"
+            app:layout_constraintStart_toEndOf="@+id/copyright_symbol"
+            app:layout_constraintTop_toTopOf="@+id/copyright_symbol"
             tools:text="Leonardo Julio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
