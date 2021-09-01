@@ -1,4 +1,4 @@
-package com.project.segunfrancis.nasapicturesapp.adapter
+package com.project.segunfrancis.nasapicturesapp.ui.util
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter

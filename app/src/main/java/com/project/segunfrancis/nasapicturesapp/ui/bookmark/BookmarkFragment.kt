@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.ImageLoader
 import com.project.segunfrancis.nasapicturesapp.R
-import com.project.segunfrancis.nasapicturesapp.adapter.PictureListAdapter
+import com.project.segunfrancis.nasapicturesapp.ui.list.PictureListAdapter
 import com.project.segunfrancis.nasapicturesapp.databinding.FragmentBookmarkBinding
 import com.project.segunfrancis.nasapicturesapp.util.EventObserver
 import com.project.segunfrancis.nasapicturesapp.util.Origin

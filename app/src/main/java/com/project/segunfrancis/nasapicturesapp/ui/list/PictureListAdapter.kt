@@ -1,4 +1,4 @@
-package com.project.segunfrancis.nasapicturesapp.adapter
+package com.project.segunfrancis.nasapicturesapp.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import coil.ImageLoader
 import com.like.LikeButton
 import com.project.segunfrancis.nasapicturesapp.R
+import com.project.segunfrancis.nasapicturesapp.ui.util.PictureDiffUtil
 import com.project.segunfrancis.nasapicturesapp.databinding.ItemPictureBinding
 import com.project.segunfrancis.nasapicturesapp.model.NasaItem
 

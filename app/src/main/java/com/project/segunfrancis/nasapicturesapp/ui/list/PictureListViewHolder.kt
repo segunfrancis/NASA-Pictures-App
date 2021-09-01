@@ -1,4 +1,4 @@
-package com.project.segunfrancis.nasapicturesapp.adapter
+package com.project.segunfrancis.nasapicturesapp.ui.list
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
