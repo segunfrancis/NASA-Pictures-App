@@ -1,5 +1,6 @@
 package com.project.segunfrancis.domain.usecase
 
+import com.project.segunfrancis.domain.di.IOCoroutineDispatcher
 import com.project.segunfrancis.domain.model.NasaItemDomain
 import com.project.segunfrancis.domain.repository.LocalRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,7 +14,7 @@ import javax.inject.Inject
 
 class GetDataUseCase @Inject constructor(
     private val localRepository: LocalRepository,
-    private val dispatcher: CoroutineDispatcher
+    @IOCoroutineDispatcher private val dispatcher: CoroutineDispatcher
 ) {
     operator fun invoke(): Flow<List<NasaItemDomain>> {
         return localRepository.getData().flowOn(dispatcher)

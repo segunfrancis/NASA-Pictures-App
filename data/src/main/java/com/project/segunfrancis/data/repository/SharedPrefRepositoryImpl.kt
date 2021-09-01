@@ -8,22 +8,22 @@ import javax.inject.Inject
 class SharedPrefRepositoryImpl @Inject constructor(private val dataSourceFactory: NasaDataSourceFactory) :
     SharedPrefRepository {
     override fun hasUserSeenOnBoarding(): Flow<Boolean> {
-        return dataSourceFactory.local().hasUserSeenOnBoarding()
+        return dataSourceFactory.preference().hasUserSeenOnBoarding()
     }
 
     override fun setUserHasSeenOnBoarding(value: Boolean): Flow<Unit> {
-        return dataSourceFactory.local().setUserHasSeenOnBoarding(value)
+        return dataSourceFactory.preference().setUserHasSeenOnBoarding(value)
     }
 
     override fun isBookmarked(date: String): Flow<Boolean> {
-        return dataSourceFactory.local().isBookmarked(date)
+        return dataSourceFactory.preference().isBookmarked(date)
     }
 
     override fun addBookmarkToPref(date: String): Flow<Unit> {
-        return dataSourceFactory.local().addBookmarkToSharedPref(date)
+        return dataSourceFactory.preference().addBookmarkToSharedPref(date)
     }
 
     override fun removeBookmarkFromPref(date: String): Flow<Unit> {
-        return dataSourceFactory.local().removeBookmarkFromSharedPref(date)
+        return dataSourceFactory.preference().removeBookmarkFromSharedPref(date)
     }
 }

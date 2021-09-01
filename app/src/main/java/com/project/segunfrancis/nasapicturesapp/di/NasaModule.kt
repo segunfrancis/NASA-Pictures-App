@@ -3,11 +3,13 @@ package com.project.segunfrancis.nasapicturesapp.di
 import android.content.Context
 import coil.ImageLoader
 import coil.util.CoilUtils
+import com.project.segunfrancis.domain.di.IOCoroutineDispatcher
+import com.project.segunfrancis.domain.di.MainCoroutineDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
@@ -19,7 +21,7 @@ import javax.inject.Singleton
  */
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class NasaModule {
 
     companion object {
@@ -49,7 +51,14 @@ class NasaModule {
     }
 
     @Provides
-    fun provideCoroutineDispatcher(): CoroutineDispatcher {
+    @IOCoroutineDispatcher
+    fun provideIOCoroutineDispatcher(): CoroutineDispatcher {
         return Dispatchers.IO
+    }
+
+    @Provides
+    @MainCoroutineDispatcher
+    fun provideMainCoroutineDispatcher(): CoroutineDispatcher {
+        return Dispatchers.Main.immediate
     }
 }

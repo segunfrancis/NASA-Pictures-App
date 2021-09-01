@@ -1,6 +1,5 @@
 package com.project.segunfrancis.nasapicturesapp.ui.bookmark
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.project.segunfrancis.domain.usecase.*
 import com.project.segunfrancis.nasapicturesapp.mapper.NasaItemMapper
@@ -9,12 +8,15 @@ import com.project.segunfrancis.nasapicturesapp.util.Event
 import com.project.segunfrancis.nasapicturesapp.util.Message
 import com.project.segunfrancis.nasapicturesapp.util.Result
 import com.project.segunfrancis.nasapicturesapp.util.asLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BookmarkViewModel @ViewModelInject constructor(
+@HiltViewModel
+class BookmarkViewModel @Inject constructor(
     private val getAllBookmarksUseCase: GetAllBookmarksUseCase,
     private val addBookmarkUseCase: AddBookmarkUseCase,
     private val removeBookmarkUseCase: RemoveBookmarkUseCase,

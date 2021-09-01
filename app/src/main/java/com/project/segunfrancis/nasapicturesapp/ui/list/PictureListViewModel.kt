@@ -1,6 +1,5 @@
 package com.project.segunfrancis.nasapicturesapp.ui.list
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.project.segunfrancis.domain.usecase.*
 import com.project.segunfrancis.nasapicturesapp.mapper.NasaItemMapper
@@ -9,25 +8,26 @@ import com.project.segunfrancis.nasapicturesapp.util.Event
 import com.project.segunfrancis.nasapicturesapp.util.Message
 import com.project.segunfrancis.nasapicturesapp.util.Result
 import com.project.segunfrancis.nasapicturesapp.util.asLiveData
-import kotlinx.coroutines.CoroutineDispatcher
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by SegunFrancis
  */
 
-class PictureListViewModel @ViewModelInject constructor(
+@HiltViewModel
+class PictureListViewModel @Inject constructor(
     private val getDataUseCase: GetDataUseCase,
     private val addBookmarkUseCase: AddBookmarkUseCase,
     private val removeBookmarkUseCase: RemoveBookmarkUseCase,
     private val addBookmarkToSharedPrefUseCase: AddBookmarkToSharedPrefUseCase,
     private val removeBookmarkFromSharedPrefUseCase: RemoveBookmarkFromSharedPrefUseCase,
     private val isBookmarkUseCase: IsBookmarkUseCase,
-    private val mapper: NasaItemMapper,
-    private val dispatcher: CoroutineDispatcher
+    private val mapper: NasaItemMapper
 ) : ViewModel() {
 
     init {
@@ -41,7 +41,7 @@ class PictureListViewModel @ViewModelInject constructor(
     val bookmarkMessage get() = _bookmarkMessage.asLiveData()
 
     private fun getPictureList() {
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch {
             getDataUseCase()
                 .catch {
                     _pictureList.postValue(Result.Error(it))
